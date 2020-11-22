@@ -141,6 +141,8 @@ class _StoryScreenState extends State<StoryScreen> with SingleTickerProviderStat
 					                        ),
 					                      );
 									    } else {
+
+                        animaController.stop();
 									      // If the VideoPlayerController is still initializing, show a
 									      // loading spinner.
 									      return Center(child: CircularProgressIndicator());

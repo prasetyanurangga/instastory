@@ -2,9 +2,11 @@ import "package:flutter/material.dart";
 import "package:instastory/models/user_model.dart";
 import "package:instastory/models/post_model.dart";
 import "package:instastory/models/story_model.dart";
+import "package:instastory/screens/profile_screen.dart";
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter_emoji/flutter_emoji.dart';
+import 'package:get/get.dart';
 
 import "package:instastory/component/circle_gradient_border.dart";
 import 'dart:async';
@@ -202,7 +204,14 @@ class _PostCardState extends State<PostCard> with TickerProviderStateMixin {
                             ),
                           ),
                           SizedBox(width: 10),
-                          Expanded( child: Text(widget.post.author.name, style : Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black, fontWeight: FontWeight.bold))),
+                          Expanded( 
+                            child: GestureDetector(
+                              child : Text(widget.post.author.name, style : Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black, fontWeight: FontWeight.bold)),
+                              onTap: (){
+                                Get.to(ProfileScreen(user: widget.post.author));
+                              }
+                            )
+                          ),
 
                           IconButton(
                             icon : Icon(Icons.more_vert, color: Colors.black),
@@ -279,7 +288,7 @@ class _PostCardState extends State<PostCard> with TickerProviderStateMixin {
                                             width : 50,
                                             height: 50,
                                             child: CachedNetworkImage(
-                                              imageUrl:stories[0].url,
+                                              imageUrl:widget.post.url[currentIndex],
                                               placeholder: (context,  url) => Center( child: CircularProgressIndicator()),
                                               fit: BoxFit.fitWidth,
                                             )

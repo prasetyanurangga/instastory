@@ -14,22 +14,20 @@ import "package:get/get.dart";
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_emoji/flutter_emoji.dart';
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen({
+class PostinganScreen extends StatefulWidget {
+  PostinganScreen({
     Key key
   }) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _PostinganScreenState createState() => _PostinganScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>{
+class _PostinganScreenState extends State<PostinganScreen>{
 
-  int selectedIndex = 0;
 
   void onTapNavBar(int index) {
     setState(() {
-      selectedIndex = index;
     });
   }
 
@@ -40,103 +38,27 @@ class _HomeScreenState extends State<HomeScreen>{
 
   @override
   Widget build(BuildContext context) {
-
-      final bottomNavigationItem = <BottomNavigationBarItem>[
-      BottomNavigationBarItem(
-        icon: Icon(Icons.home, size: 30),
-        label: "Home",
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.search, size: 30),
-        label: "Search",
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.add_box_outlined, size: 30),
-        label: "Add",
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.favorite_border, size: 30),
-        label: "Favorite",
-      ),
-      BottomNavigationBarItem(
-        icon: SizedBox(
-            child:CircleAvatar(
-            radius: 50,
-            backgroundImage: NetworkImage(users[0].profilImage)
-          ),
-            width: 30,
-            height: 30,
-        ),
-        label: "Profile",
-      ),
-    ];
-
-
     var parser = EmojiParser();
-
-    final bottomNavBar = BottomNavigationBar(
-      elevation: 20,
-      items: bottomNavigationItem,
-      currentIndex: selectedIndex,
-      selectedItemColor: Colors.black,
-      unselectedItemColor: Colors.grey[600],
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      onTap: onTapNavBar,
-    );
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 2,
-        title: Text("Instastory", style: GoogleFonts.lobster(textStyle: Theme.of(context).textTheme.headline6.copyWith(color: Colors.black))),
+        title: Text("Postingan", style: Theme.of(context).textTheme.headline6.copyWith(color: Colors.black)),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.back();
+          },
           icon: Icon(
-            Icons.camera_alt,
+            Icons.arrow_back,
             color: Colors.black
           ),
         ),
-        actions:[
-          IconButton(
-            onPressed : (){},
-            icon: Icon(
-              Icons.send,
-              color: Colors.black
-            ),
-          )
-        ],
       ),
-      bottomNavigationBar: bottomNavBar,
       body: RefreshIndicator(
       onRefresh: (){ print("refresh"); }, child : SingleChildScrollView(
         child: Column(
-          children :[
-            Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(width: 1, color: Colors.grey[300]),
-                ),
-              ),
-              height: 120,
-              child : ListView.builder(
-                itemCount: users.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index){
-                  if(index == 0){
-                      return StoryCircleAdd(press: (){
-                        Get.to(StoryScreen(user : users[index],));
-                      });
-                    }else{
-                      return StoryCircle(press: (){
-                        Get.to(StoryScreen(user : users[index]));
-                      }, user : users[index], size: 75, tickBorder: 3.0);
-                    }
-                }
-              ),
-            ),
-            Column(
               children : List.generate(posts.length, (index){
                 return PostCard(post: posts[index],press:  (){
                     Get.bottomSheet(
@@ -147,11 +69,11 @@ class _HomeScreenState extends State<HomeScreen>{
                       child :Wrap(
                         children:[
                           Container(decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(width: 1, color: Colors.grey[300]),
-                ),
-              ),
-                      padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
+                            border: Border(
+                              bottom: BorderSide(width: 1, color: Colors.grey[300]),
+                            ),
+                          ),
+                           padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
                               child : Row(
                             children:[
 
@@ -216,8 +138,7 @@ class _HomeScreenState extends State<HomeScreen>{
                 });
               }),
             )
-          ],
-        ),
+
       ),),
     );
   }
