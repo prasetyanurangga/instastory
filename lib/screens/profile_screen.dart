@@ -290,6 +290,9 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
                     return GestureDetector(
+                        onTap:(){
+                          Get.to(PostinganScreen());
+                        },
                         onLongPress:(){
                           showDialog(
                             context: context,
