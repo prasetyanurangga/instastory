@@ -23,7 +23,5 @@ For more information contact angganurprasetya4@gmail.com
 [Instastory.apk](https://raw.githubusercontent.com/prasetyanurangga/instastory/master/instastory.apk)
 
 ### Instastory App Final UI
-![App UI](https://raw.githubusercontent.com/prasetyanurangga/instastory/master/instastory_app_ui.png)
-
-![Demo](https://raw.githubusercontent.com/prasetyanurangga/instastory/master/instastory_app.mp4)
+![App UI](https://github.com/prasetyanurangga/instastory/raw/main/instastory_app_ui.png)
 
