@@ -34,6 +34,12 @@ dependencies:
   flutter_emoji: ^2.2.1+1
   google_fonts: ^1.1.1
   flutter_svg: ^0.19.1
+  flutter_pagewise: ^1.2.3
+  quiver: ^2.1.5
+  smooth_page_indicator: ^0.2.0
+  flare_flutter: ^2.0.6
+  transparent_image: ^1.0.0
+
 
 dev_dependencies:
   flutter_test:

@@ -15,6 +15,7 @@ import "package:instastory/constant.dart";
 import "package:get/get.dart";
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_emoji/flutter_emoji.dart';
+import 'package:instastory/component/cache_image_view.dart';
 
 class ProfileScreen extends StatefulWidget {
 
@@ -312,11 +313,9 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
                             children : [
                               Container(
                                 width: double.infinity,
-                                child: CachedNetworkImage(
-                                  imageUrl:posts[index].url[0],
-                                  placeholder: (context,  url) => Center( child: CircularProgressIndicator()),
-                                  fit: BoxFit.fitWidth,
-                                ),
+                                child: CacheImageView(
+                                  url:posts[index].url[0],
+                                )
                               ),
                               (posts[index].url.length > 1) ? Positioned(
                                 top : 10,

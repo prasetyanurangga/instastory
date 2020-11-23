@@ -1,5 +1,6 @@
 import "package:instastory/models/user_model.dart";
 import 'package:meta/meta.dart';
+import 'package:quiver/iterables.dart';
 
 enum MediaType{
 	image,
@@ -214,3 +215,11 @@ final List<PostModel> posts = [
     desc: "Lrem Ipsum dlor sir amet",
   ),
 ];
+
+class BackendService {
+  static Future<List<PostModel>> getPosts(offset, limit) async {
+    final pairs = partition(posts, limit).toList();
+    return pairs[offset];
+  }
+}
+

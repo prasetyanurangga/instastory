@@ -212,9 +212,9 @@ class _StoryScreenState extends State<StoryScreen> with SingleTickerProviderStat
   				_vidCont.play();
   				animaController.forward();
   			}
-	}else{
-		animaController.forward();
-	}
+    }else{
+    	animaController.forward();
+    }
   }
 
   void onTapStory(TapDownDetails detail, StoryModel story){
@@ -222,9 +222,6 @@ class _StoryScreenState extends State<StoryScreen> with SingleTickerProviderStat
   	final leftScreen = sizeScreen.width * 0.3;
   	final rightScreen = sizeScreen.width * 0.6;
   	final currentPosition = detail.globalPosition.dx;
-  	print(leftScreen);
-  	print(rightScreen);
-  	print(detail.globalPosition.dx);
 
   	if(currentPosition <= leftScreen && currentIndex != 0){
   		
@@ -242,16 +239,15 @@ class _StoryScreenState extends State<StoryScreen> with SingleTickerProviderStat
   	else if((currentPosition <= leftScreen && currentIndex == 0) || (currentPosition >= rightScreen && currentIndex == (stories.length - 1))){
   		Get.back();
   	}
-  	else{
-  		if(story.media == MediaType.video){
-  			if(_vidCont.value.isPlaying){
-  				_vidCont.pause();
-  				animaController.stop();
-  			}
-  		}else{
-  			animaController.stop();
-  		}
-
-  	}
+    else{
+      if(story.media == MediaType.video){
+        if(_vidCont.value.isPlaying){
+          _vidCont.pause();
+          animaController.stop();
+        }
+      }else{
+        animaController.stop();
+      }
+    }
   }
 }
