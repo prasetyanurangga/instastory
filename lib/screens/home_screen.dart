@@ -3,6 +3,7 @@ import "package:instastory/models/story_model.dart";
 import "package:instastory/models/user_model.dart";
 import "package:instastory/models/post_model.dart";
 import "package:instastory/screens/story_screen.dart";
+import "package:instastory/screens/explore_screen.dart";
 import "package:instastory/component/post_card.dart";
 import "package:instastory/constant.dart";
 import "package:get/get.dart";
@@ -31,6 +32,9 @@ class _HomeScreenState extends State<HomeScreen>{
     setState(() {
       selectedIndex = index;
     });
+    if(index == 1){
+      Get.to(ExploreScreen());
+    }
   }
 
   @override

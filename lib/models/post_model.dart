@@ -1,4 +1,5 @@
 import "package:instastory/models/user_model.dart";
+import "package:instastory/models/explore_model.dart";
 import 'package:meta/meta.dart';
 import 'package:quiver/iterables.dart';
 
